@@ -1,0 +1,19 @@
+GET http://localhost:8080/calc?num1=100&num2=5&type=DIV
+
+###
+
+POST http://localhost:8080/reg
+Content-Type: application/x-www-form-urlencoded
+
+login=V@1232&name=Vasiy&password=29111993
+
+###
+
+POST http://localhost:8080/auth
+Content-Type: application/x-www-form-urlencoded
+
+login=V@1232&password=29111993
+
+###
+
+GET http://localhost:8080/report
