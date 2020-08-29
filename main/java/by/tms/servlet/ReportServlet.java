@@ -16,11 +16,6 @@ public class ReportServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<UsersOperation> report = (List<UsersOperation>) req.getSession().getAttribute("report");
-        if (report.isEmpty()) {
-            resp.getWriter().println("report is empty");
-            return;
-        }
-        resp.getWriter().println(report.stream().flatMap( o -> Stream.of(o.toString() + "\n")).collect(Collectors.toList()));
+        req.getRequestDispatcher("/rep.jsp").forward(req, resp);
     }
 }

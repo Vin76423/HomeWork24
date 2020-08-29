@@ -1,4 +1,4 @@
-package by.tms.service_2;
+package by.tms.service;
 
 public enum Calc {
     SUM{
@@ -18,8 +18,11 @@ public enum Calc {
 
     DIV{
         @Override
-        public double run(double a, double b) { return a / b; }
+        public double run(double a, double b) throws ArithmeticException {
+            if (b == 0) throw new ArithmeticException();
+            return a / b;
+        }
     };
 
-    public abstract double run(double a, double b);
+    public abstract double run(double a, double b) throws ArithmeticException;
 }

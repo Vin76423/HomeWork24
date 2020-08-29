@@ -7,11 +7,13 @@ public class UsersOperation {
     private String num1;
     private String num2;
     private String type;
+    private String result;
 
-    public UsersOperation(String num1, String num2, String type) {
+    public UsersOperation(String num1, String num2, String type, String result) {
         this.num1 = num1;
         this.num2 = num2;
         this.type = type;
+        this.result = result;
     }
 
     public UsersOperation() {
@@ -47,6 +49,14 @@ public class UsersOperation {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     @Override

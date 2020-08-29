@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/auth")
 public class AuthorizationServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/auth.jsp").forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,9 +25,9 @@ public class AuthorizationServlet extends HttpServlet {
             if (user.getLogin().equals(req.getParameter("login")) && user.getPassword().equals(req.getParameter("password"))){
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("report", new ArrayList<>());
-            } else {
                 resp.sendRedirect("/");
+            } else {
+                req.getRequestDispatcher("/auth.jsp").forward(req, resp);
             }
         }
     }

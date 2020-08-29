@@ -1,6 +1,7 @@
 package by.tms.listeners;
 
 import by.tms.entity.User;
+import by.tms.entity.UsersOperation;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -14,7 +15,6 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Created servletContext...");
         List<User> users = new ArrayList<>();
         sce.getServletContext().setAttribute("users", users);
     }
@@ -42,7 +42,7 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
-        System.out.println("Created session...");
+        session.setAttribute("report", new ArrayList<UsersOperation>());
     }
 
     @Override
